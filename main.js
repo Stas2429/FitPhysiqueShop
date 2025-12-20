@@ -1684,15 +1684,6 @@ function renderCart() {
                     </div>
 
                     <div class="cart-item__actions">
-                        ${item.type === 'buy' ? `
-                            <div class="cart-item__quantity">
-                                <button class="cart-item__quantity-button"
-                                        onclick="changeQuantity(${index}, -1)">-</button>
-                                <span>${item.quantity}</span>
-                                <button class="cart-item__quantity-button"
-                                        onclick="changeQuantity(${index}, 1)">+</button>
-                            </div>
-                        ` : ''}
                         <button class="cart-item__remove"
                                 onclick="removeFromCart(${index})">
                             Удалить
@@ -1834,16 +1825,6 @@ function renderCart() {
             </button>
         </form>
     `;
-}
-
-function changeQuantity(index, change) {
-    const item = cart[index];
-    if (item.type === 'buy') {
-        item.quantity += change;
-        if (item.quantity < 1) item.quantity = 1;
-        item.price = item.pricePerUnit * item.quantity;
-        renderCart();
-    }
 }
 
 function removeFromCart(index) {
